@@ -17,9 +17,12 @@ def getAllWords():
     cursor = songs.find()
     data = []
     for doc in cursor:    	
-    	value = ('{ "word" : "%s", "gender" : "%s", "definition" : "%s", "amount" : "%d" }' % (str(doc['word']), str(doc['gender']), str(doc['definition']), (doc['amount'])))
-    	print(value)
-    	data.append(value)
+    	val = {}
+    	val['word'] = doc['word'];
+    	val['gender'] = doc['gender'];
+    	val['definition'] = doc['definition'];
+    	val['amount'] = doc['amount'];
+    	data.append(val)
     data = json.dumps(data)
     
     client.close()

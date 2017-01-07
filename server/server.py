@@ -12,6 +12,11 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 def getAllWords():
     return words.getAllWords()
 
+@app.route('/', methods = ['GET'])
+@cross_origin()
+def root():
+    return "root"
+
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
