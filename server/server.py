@@ -1,4 +1,4 @@
-from flask import Flask, url_for, json,Response,render_template,send_from_directory
+from flask import Flask, url_for, json,Response,render_template,send_from_directory, request
 from flask_cors import CORS, cross_origin
 import requests,os
 import words
@@ -17,6 +17,19 @@ def getAllWords():
 def root():
     return "root"
 
+
+@app.route('/updateamount/<string:_word>/<int:_amount>')
+def update_word(_word,_amount):
+    words.updateWordAmount(_word,_amount)
+    return "yes"
+
+@app.route('/login',methods = ['POST', 'GET'])
+def login():
+   if request.method == 'POST':
+      wordd = request.form['word']
+      amountt = request.form['amount']
+      words.updateWordAmount(wordd,amountt)
+      return "yes"
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.

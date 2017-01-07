@@ -28,3 +28,24 @@ def getAllWords():
     client.close()
 
     return data
+
+def updateWordAmount(_word,amount):
+
+    
+    client = pymongo.MongoClient(MONGODB_URI)
+
+    db = client.get_default_database()
+    
+    songs = db['words']
+
+    newAmount = songs.find_one({"word": _word})['amount']+ int(amount)
+    query = {"word":_word}
+    songs.update_one(query, {'$set': {'amount': newAmount}})
+
+    client.close()
+
+  
+
+
+
+  
