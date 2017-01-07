@@ -1,0 +1,6 @@
+colorthief==0.2
+flask-cors==2.1.2
+flask==0.11.1
+requests-oauthlib==0.7.0
+requests==2.11.1
+jsonschema==2.5.1
